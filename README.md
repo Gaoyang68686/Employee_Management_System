@@ -3,7 +3,7 @@
 Kilburnazon Design Specification:
     Kilburnazon’s staff are organised into departments including Management, HR, Drivers and Packagers. Each of these departments has a name, number and an employee who manages it. We
 should also note the numbers of employees in each department and the department’s head office
-location.
+location.<br />
     Each employee in Kilburnazon has an employee number which stays with them for the duration of their employment. We must also know their name, home address, salary, date of birth and
 national insurance number (NIN). Every employee is assigned to a single department and has a
 manager they report to, the manager will be from the management department. Each employee
