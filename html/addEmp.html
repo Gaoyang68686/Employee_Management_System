@@ -77,14 +77,12 @@
         if (data.code == 200) {
             var leng = data.data.length;
             var returnData = data.data;
-
             var op;
             for (var i = 0; i < leng; i++) {
                 op += "<option value='" + returnData[i][0] + "'>" + returnData[i][1] + "</option>";
             }
             $(".department").html(op)
         }
-
     }, 'json');
     $(function () {
         $("#form").submit(function () {

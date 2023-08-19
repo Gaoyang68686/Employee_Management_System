@@ -16,9 +16,7 @@
     <div class="search_list">
         <input class="emp_id" placeholder="Input emp_id Search ">
         department:
-        <select class="department">
-
-        </select>
+        <select class="department"></select>
         emergency_relationship:
         <select class="emergency_relationship">
             <option></option>
@@ -31,7 +29,6 @@
             <option>Civil Partner</option>
         </select>
         <button onclick="search()">search</button>
-
     </div>
     <table border="1" id="table" cellspacing=0></table>
 </body>
@@ -52,11 +49,12 @@
             }
             $(".department").html(op)
         }
-
     }, 'json');
+    
     function update(id) {
         window.location.href = "updateEmp.php?emp_id=" + id;
     }
+    
     function deletes(id) {
         $.post("../api.php", {
             'emp_id': id,
@@ -67,12 +65,15 @@
         }, 'json');
 
     }
+    
     function add() {
         window.location.href = "addEmp.html";
     }
+    
     function birthday() {
         window.location.href = "birthlist.php";
     }
+    
     function search() {
         var emp_id = $(".emp_id").val();
         var department = $(".department").val();
@@ -81,6 +82,7 @@
         getList(emp_id, department, emergency_relationship);
 
     }
+    
     function getList(keywords = '', department, emergency_relationship) {
         $.post("../api.php", {
             'emp_id': keywords,
@@ -131,7 +133,6 @@
     }
     $(function () {
         getList();
-
     })
 </script>
 

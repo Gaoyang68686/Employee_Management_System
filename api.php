@@ -4,7 +4,6 @@ session_start();
 function allAction()
 {
     $action = $_POST['action'];
-    //    returnData('100',$action );
     if ($action != 'login') {
         $loginUser = $_SESSION['user'];
         if (!$loginUser) {
@@ -37,11 +36,6 @@ function login()
 
     $con = mysql();
     $resultone = mysqli_query($con, $sqlFind);
-    /*
-    if($resultone->num_rows==0){
-        returnData(002,"Only department managers can login");
-    }
-    */
     $_SESSION['user'] = $emp_id;
     returnData(200, " Login succeeded");
 }
@@ -132,12 +126,9 @@ function lists()
     if ($emergency_relationship) {
         $where .= "and emergency_relationship ='$emergency_relationship'";
     }
-
     $sqlFind = "select `emp_id`, employee.name, `address`, `salary`, `date_of_birth`, `nin`, department.name, `emergency_name`, `emergency_relationship`, `emergency_phone`,manager_emp_id from employee left  join department on employee.dept_number = department.dept_number " . $where;
-
     $con = mysql();
     $result = mysqli_query($con, $sqlFind);
-
     $row = mysqli_fetch_all($result);
     foreach ($row as $rk => $rv) {
 
@@ -157,15 +148,12 @@ function info()
         returnData('001', 'Parameter exception');
     }
     $sql = "select * from employee  where  emp_id ='$emp_id'";
-
-
     $con = mysql();
     $result = mysqli_query($con, $sql);
     if ($result->num_rows == 0) {
         returnData(002, "emp_id： $emp_id does not exist");
     }
     $row = mysqli_fetch_array($result);
-
     returnData(200, '', $row);
 }
 
@@ -227,9 +215,9 @@ function update()
         returnData(200, 'Successfully Update!');
     } else {
         returnData(003, 'Update failed');
-
     }
 }
+
 function delete()
 {
     $emp_id = $_POST['emp_id'];
@@ -240,16 +228,14 @@ function delete()
     $admin_emp_id = $_SESSION['user'];
     $sql1 = "UPDATE `employee`  SET   `admin_emp_id`='$admin_emp_id'WHERE (`emp_id`='$emp_id')";
     $result1 = mysqli_query($con, $sql1);
-
-
     $sql = "delete from employee  where  emp_id ='$emp_id'";
-
     $result = mysqli_query($con, $sql);
     if ($result) {
         returnData(200, 'Delete succeeded');
     }
     returnData(001, 'Delete failed');
 }
+
 function birthday()
 {
     $month = date("m");

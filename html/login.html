@@ -18,7 +18,6 @@
     <h1>Login to the employee system</h1>
     <form id="form">
         <div class="item">
-            <!-- <span>emp_id:</span> -->
             <span>password:</span>
             <input type="text" class="emp_id">
         </div>
@@ -30,7 +29,6 @@
 
 <script type="text/javascript">
     $(function () {
-        // form data
         $("#form").submit(function () {
             $.post("../api.php", {
                 'emp_id': $(".emp_id").val(),
@@ -40,10 +38,7 @@
                 if (data.code == 200) {
                     window.location.href = "list.html";
                 }
-
             }, 'json');
-
-
             return false;
         });
     })
